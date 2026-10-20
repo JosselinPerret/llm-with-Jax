@@ -1,0 +1,9 @@
+{
+  "maxlen": 128,
+  "vocab_size": 50257,
+  "embed_dim": 192,
+  "num_heads": 6,
+  "feed_forward_dim": 512,
+  "num_transformer_blocks": 6,
+  "tokenizer": "gpt2"
+}

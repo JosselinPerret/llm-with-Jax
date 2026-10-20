@@ -1,0 +1,7 @@
+# Keep deps light — Spaces already installs Gradio.
+# Avoid pinning flax>=0.12 (fails to resolve on HF builders).
+# Model uses named block_* attrs (no nnx.List).
+jax
+flax
+tiktoken
+numpy
