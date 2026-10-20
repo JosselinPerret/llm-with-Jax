@@ -3,3 +3,8 @@
 small_checkpoint.orbax/
 
 .gradio/
+
+small_gpt.orbax/
+space/small_gpt.orbax/
+
+space/

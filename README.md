@@ -1,22 +1,69 @@
-# LLM with JAX
+<p align="center">
+  <h1 align="center">LLM with JAX</h1>
+  <p align="center">
+    <strong>Build · Train · Generate</strong> — a ~20M GPT from scratch with JAX &amp; Flax NNX
+  </p>
+</p>
 
-Build, train, and run a small GPT-style language model from scratch with **JAX** and **Flax NNX**.
+<p align="center">
+  <a href="https://huggingface.co/spaces/almostjojo/tinystories-jax-gpt">
+    <img src="https://img.shields.io/badge/%F0%9F%A4%97%20Live%20Demo-Hugging%20Face%20Space-FFD21E?style=for-the-badge&labelColor=0B0F19" alt="Live Demo" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/JosselinPerret/llm-with-Jax">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+  &nbsp;
+  <a href="https://huggingface.co/datasets/roneneldan/TinyStories">
+    <img src="https://img.shields.io/badge/Dataset-TinyStories-blue?style=for-the-badge&logo=huggingface&logoColor=white" alt="TinyStories" />
+  </a>
+</p>
 
-This project implements a ~20M-parameter decoder-only transformer trained on [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories), with checkpointing, text generation, and an interactive Gradio demo.
+<p align="center">
+  <img src="https://img.shields.io/badge/JAX-0B5CAF?style=flat-square&logo=jax&logoColor=white" alt="JAX" />
+  <img src="https://img.shields.io/badge/Flax%20NNX-4B0082?style=flat-square" alt="Flax" />
+  <img src="https://img.shields.io/badge/Params-~20.2M-success?style=flat-square" alt="Params" />
+  <img src="https://img.shields.io/badge/Context-128%20tokens-lightgrey?style=flat-square" alt="Context" />
+  <img src="https://img.shields.io/badge/License-Learning-orange?style=flat-square" alt="License" />
+</p>
 
-> **Coming soon:** the trained model and demo will be published on [Hugging Face](https://huggingface.co/) (model repo + Space).
+---
+
+### Try it now
+
+<p align="center">
+  <a href="https://huggingface.co/spaces/almostjojo/tinystories-jax-gpt">
+    <img src="https://img.shields.io/badge/Open%20the%20story%20generator-%E2%86%92-black?style=for-the-badge&color=FF4B4B" alt="Open demo" />
+  </a>
+</p>
+
+Type a prompt like *“Once upon a time a big bear…”* and the model continues the story.
+
+---
+
+## What is this?
+
+An end-to-end educational project: a **decoder-only transformer** trained on [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories), with:
+
+- custom architecture in **Flax NNX**
+- training with **Optax** + **Grain**
+- checkpoints via **Orbax**
+- text generation + **Gradio** UI
+- a public **Hugging Face Space**
 
 ---
 
 ## Training results
 
-Loss decreases sharply in the first steps, then stabilizes around ~3 after training on 100,000 stories:
+Loss drops fast in the first steps, then settles around ~3 after ~100k stories:
 
-![Training loss](images/training_loss.png)
+<p align="center">
+  <img src="images/training_loss.png" alt="Training loss curve" width="720" />
+</p>
 
 ---
 
-## Model overview
+## Model card
 
 | Spec | Value |
 | --- | --- |
@@ -29,99 +76,80 @@ Loss decreases sharply in the first steps, then stabilizes around ~3 after train
 | Tokenizer | GPT-2 (`tiktoken`) |
 | Dataset | TinyStories |
 
-Architecture highlights:
-
-- Token + positional embeddings
-- Causal multi-head self-attention
-- Residual connections
-- Linear output head over the GPT-2 vocabulary
+**Architecture:** token + positional embeddings → causal multi-head attention → residuals → linear LM head.
 
 ---
 
 ## Stack
 
-- **JAX** — numerics and autodiff  
-- **Flax NNX** — modular model definition  
-- **Optax** — AdamW + learning-rate schedule  
-- **Orbax** — checkpoint save / restore  
-- **Grain** — data loading  
-- **tiktoken** — tokenization  
-- **Gradio** — local interactive demo  
-
----
-
-## Repository layout
-
-```text
-llm-with-Jax/
-├── llm-20m-params.ipynb   # end-to-end notebook (build → train → generate → demo)
-├── images/
-│   └── training_loss.png  # training curve
-├── small_gpt.orbax/       # model checkpoint
-└── README.md
-```
+<p align="center">
+  <img src="https://img.shields.io/badge/JAX-numerics-0B5CAF?style=for-the-badge" alt="JAX" />
+  <img src="https://img.shields.io/badge/Flax%20NNX-modules-4B0082?style=for-the-badge" alt="Flax" />
+  <img src="https://img.shields.io/badge/Optax-AdamW-1a73e8?style=for-the-badge" alt="Optax" />
+  <img src="https://img.shields.io/badge/Orbax-checkpoints-5c6bc0?style=for-the-badge" alt="Orbax" />
+  <img src="https://img.shields.io/badge/Grain-dataload-37474f?style=for-the-badge" alt="Grain" />
+  <img src="https://img.shields.io/badge/Gradio-demo-FF7C00?style=for-the-badge" alt="Gradio" />
+</p>
 
 ---
 
 ## Quick start
 
-### 1. Environment
-
 ```bash
 python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
+# Windows: .venv\Scripts\activate
+# macOS / Linux: source .venv/bin/activate
 
 pip install jax flax matplotlib tiktoken grain datasets optax orbax-checkpoint gradio
 ```
 
-### 2. Open the notebook
-
-Run `llm-20m-params.ipynb` cell by cell to:
-
-1. Define the GPT architecture  
-2. Load and tokenize TinyStories  
-3. Train with Optax / Flax NNX  
-4. Save checkpoints with Orbax  
-5. Generate stories with `create_story(...)`  
-6. Launch the Gradio UI  
-
-### 3. Generate text
+Open `llm-20m-params.ipynb` and run it top to bottom: architecture → data → train → generate → Gradio.
 
 ```python
 create_story("Once upon a time a big bear ", temperature=0.2, max_new_tokens=30)
 ```
 
-Example output:
-
 > Once upon a time a big bear old, who lived in a big forest. He was very happy and he loved to play. One day, he saw a big, a big,
 
 ---
 
-## Checkpointing
+## Repo layout
 
-Weights are stored with Orbax:
-
-```python
-checkpointer = orbax.checkpoint.PyTreeCheckpointer()
-checkpointer.save(checkpoint_path, nnx.state(model), force=True)
+```text
+llm-with-Jax/
+├── llm-20m-params.ipynb   # full training + inference notebook
+├── space/                 # Hugging Face Gradio Space
+│   ├── app.py
+│   ├── model.py
+│   ├── config.json
+│   ├── weights.npz
+│   └── requirements.txt
+├── images/training_loss.png
+└── README.md
 ```
-
-Restored weights live under `small_gpt.orbax/`.
 
 ---
 
-## Hugging Face deployment (planned)
+## Hugging Face Space
 
-Planned next steps:
+<p align="center">
+  <a href="https://huggingface.co/spaces/almostjojo/tinystories-jax-gpt">
+    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Space%20is%20live-almostjojo%2Ftinystories--jax--gpt-FFD21E?style=for-the-badge&labelColor=0B0F19" alt="Space live" />
+  </a>
+</p>
 
-1. Upload model weights + `config.json` to a **Hugging Face model repo**  
-2. Publish a **Space** with the Gradio story generator  
-3. Document load / inference instructions on the model card  
+Redeploy from this repo:
 
-Stay tuned — links will be added here once the deployment is live.
+```powershell
+.\space\deploy.ps1
+```
+
+Or:
+
+```powershell
+hf repos create almostjojo/tinystories-jax-gpt --type space --space-sdk gradio --flavor zero-a10g --public --exist-ok
+hf upload almostjojo/tinystories-jax-gpt .\space . --repo-type space
+```
 
 ---
 
@@ -129,14 +157,14 @@ Stay tuned — links will be added here once the deployment is live.
 
 - [x] GPT architecture in Flax NNX  
 - [x] TinyStories training pipeline  
-- [x] Loss monitoring & checkpoints  
-- [x] Autoregressive generation  
+- [x] Checkpoints & generation  
 - [x] Local Gradio demo  
-- [ ] Hugging Face model + Space deployment  
-- [ ] Longer context / larger model variants  
+- [x] Hugging Face Space live  
+- [ ] Longer context / larger variants  
+- [ ] Faster inference (`jit` + KV cache)
 
 ---
 
 ## License
 
-This project is provided for learning and experimentation. Dataset terms follow [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories).
+For learning and experimentation. Dataset terms: [TinyStories](https://huggingface.co/datasets/roneneldan/TinyStories).
