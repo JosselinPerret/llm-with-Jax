@@ -1,3 +1,5 @@
 .venv/
 
 small_checkpoint.orbax/
+
+.gradio/
