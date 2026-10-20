@@ -6,7 +6,9 @@
 
 
 
-![Live Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Live%20Demo-Hugging%20Face%20Space-FFD21E?style=for-the-badge&labelColor=0B0F19)   ![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)   ![TinyStories](https://img.shields.io/badge/Dataset-TinyStories-blue?style=for-the-badge&logo=huggingface&logoColor=white)
+[![Live Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Live%20Demo-Hugging%20Face%20Space-FFD21E?style=for-the-badge&labelColor=0B0F19)](https://huggingface.co/spaces/almostjojo/tinystories-jax-gpt)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JosselinPerret/llm-with-Jax)
+[![TinyStories](https://img.shields.io/badge/Dataset-TinyStories-blue?style=for-the-badge&logo=huggingface&logoColor=white)](https://huggingface.co/datasets/roneneldan/TinyStories)
 
 ![JAX](https://img.shields.io/badge/JAX-0B5CAF?style=flat-square&logo=jax&logoColor=white)![Flax](https://img.shields.io/badge/Flax%20NNX-4B0082?style=flat-square)![Params](https://img.shields.io/badge/Params-~20.2M-success?style=flat-square)![Context](https://img.shields.io/badge/Context-128%20tokens-lightgrey?style=flat-square)![License](https://img.shields.io/badge/License-Learning-orange?style=flat-square)
 
@@ -18,7 +20,7 @@
 
 ### Try it now
 
-![Open demo](https://img.shields.io/badge/Open%20the%20story%20generator-%E2%86%92-black?style=for-the-badge&color=FF4B4B)
+[![Open demo](https://img.shields.io/badge/Open%20the%20story%20generator-%E2%86%92-black?style=for-the-badge&color=FF4B4B)](https://huggingface.co/spaces/almostjojo/tinystories-jax-gpt)
 
 Type a prompt like *“Once upon a time a big bear…”* and the model continues the story.
 
@@ -122,7 +124,7 @@ llm-with-Jax/
 
 ## Hugging Face Space
 
-![Space live](https://img.shields.io/badge/%F0%9F%9A%80%20Space%20is%20live-almostjojo%2Ftinystories--jax--gpt-FFD21E?style=for-the-badge&labelColor=0B0F19)
+[![Space live](https://img.shields.io/badge/%F0%9F%9A%80%20Space%20is%20live-almostjojo%2Ftinystories--jax--gpt-FFD21E?style=for-the-badge&labelColor=0B0F19)](https://huggingface.co/spaces/almostjojo/tinystories-jax-gpt)
 
 Redeploy from this repo:
 
